@@ -6,30 +6,31 @@ public class Pause : MonoBehaviour {
 
 	[SerializeField]
 
-	public Transform canvas;
+	public Transform PauseCanvas;
+
 
 	// Use this for initialization
 	void Start () {
-		canvas.gameObject.SetActive (false);// not pausing yet
+		PauseCanvas.gameObject.SetActive (false);// not pausing yet
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			if (!canvas.gameObject.activeInHierarchy) {
+			if (!PauseCanvas.gameObject.activeInHierarchy) {
 				PauseGame ();
 			} else {
 				ContinueGame();
 			}
-		
 		}
+
 	}
 	private void PauseGame(){
 		Time.timeScale = 0;
-		canvas.gameObject.SetActive (true);
+		PauseCanvas.gameObject.SetActive (true);
 	}
 	private void ContinueGame(){
 		Time.timeScale = 1;
-		canvas.gameObject.SetActive(false);
+		PauseCanvas.gameObject.SetActive(false);
 	}
 }

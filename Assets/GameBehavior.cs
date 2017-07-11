@@ -6,8 +6,25 @@ using UnityEngine.UI;
 
 public class GameBehavior : MonoBehaviour {
 	public Text goldLabel;
-
+	public Text waveLabel; //wave
+	public GameObject[] nextWaveLabels; //array to store next wave
 	private int gold;
+	public bool gameOver = false;
+	private int wave;
+	public int Wave {
+		get{ return wave; } // curr wave
+		set {
+			wave = value;
+			if (gameOver == false) {
+				for (int i = 0; i < nextWaveLabels.Length; i++) {
+					nextWaveLabels[i].GetComponent<Animator> ().SetTrigger ("nextWave");
+				}
+			}
+			waveLabel.text = "WAVE: " + (wave + 1);
+		}
+
+	}
+
 	public int Gold{
 		get{
 			return gold;

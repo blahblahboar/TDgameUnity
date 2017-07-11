@@ -5,19 +5,34 @@ using UnityEngine;
 
 
 
-
+[RequireComponent(typeof(LineRenderer))]
 public class PlaceMonster : MonoBehaviour {
 	private GameBehavior gameManager;
 	public GameObject monsterPrefab;
 	private GameObject monster;
-
+	public int segments = 50;
+	public float xradius = 5.0f;
+	public float yradius = 5.0f;
+	LineRenderer line;
 	// Use this for initialization
 		
 	void Start () {
 		gameManager = GameObject.Find ("GameManager").GetComponent<GameBehavior> ();
-		
+		line = gameObject.GetComponent<LineRenderer> ();
+		line.SetVertexCount (segments + 1);
+		line.useWorldSpace = false;
 	}
-	
+
+	void CreatePoints(){
+		float x, y, z;
+		float angle = 20f;
+		for (int i = 0; i < (segments + 1); i++) {
+			x = Mathf.Sin (Mathf.Deg2Rad * angle) * xradius;
+			z = Mathf.Cos (Mathf.Deg2Rad * angle) * yradius;
+			line.SetPosition (i, new Vector3 (x, 0, z));
+			angle += (360f / segments);
+		}
+	}
 	// Update is called once per frame
 	void Update () {
 		
@@ -31,6 +46,22 @@ public class PlaceMonster : MonoBehaviour {
 			return false;
 		}
 	}
+//	void OnMouseOver(){
+//		bool hovering;
+//		hovering = true;
+//		if(hovering){
+//			if (monster != null) {
+//				CreatePoints ();
+//			}
+//			if (OnMouseExit()){
+//				hovering = false;
+//			}
+//
+//	}
+//	}
+//	bool OnMouseExit(){
+//		return true;
+//	}
 
 	void OnMouseUp(){
 		if (spotEmpty ()) {
@@ -44,7 +75,7 @@ public class PlaceMonster : MonoBehaviour {
 			AudioSource audioSource = gameObject.GetComponent<AudioSource>();
 			audioSource.PlayOneShot(audioSource.clip);
 		}
-		gameManager.Gold -= monster.GetComponent<MonsterData> ().CurrentLevel.cost;
+		//gameManager.Gold -= monster.GetComponent<MonsterData> ().CurrentLevel.cost;
 	}
 
 	private bool canUpgradeMonster(){

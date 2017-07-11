@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="Unity.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PlaceMonster.cs">
+    <Files>
+      <File FileName="Assets\Scripts\CameraShake.cs" Line="1" Column="1" />
+      <File FileName="Assets\PlaceMonster.cs" Line="85" Column="15" />
+      <File FileName="Assets\MonsterData.cs" Line="18" Column="8" />
+      <File FileName="Assets\GameBehavior.cs" Line="20" Column="23" />
+      <File FileName="Assets\EnemyMove.cs" Line="23" Column="22" />
+      <File FileName="Assets\Spawn.cs" Line="21" Column="2" />
+      <File FileName="Assets\Pause.cs" Line="10" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

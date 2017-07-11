@@ -15,7 +15,7 @@ public class MonsterLevel{
 
 
 public class MonsterData : MonoBehaviour {
-	private MonsterLevel currentLevel;
+	public MonsterLevel currentLevel;
 	public List<MonsterLevel> levels;
 	// levels is our list of monster levels in unity
 

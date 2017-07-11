@@ -13,6 +13,21 @@ public class EnemyMove : MonoBehaviour {
 	public float speed = 1.0f; 
 	//stores the movement of the enemies
 
+
+	// turns the enemies
+	private void RotateIntoMoveDirection(){
+		Vector3 newStart = waypoints [currWaypoint].transform.position;
+		Vector3 newEnd = waypoints[currWaypoint+1].transform.position;
+		Vector3 newDir = (newEnd - newStart);
+		float x = newDir.x;
+		float y = newDir.y;
+		float rotAngle = Mathf.Atan2 (y, x) * 180 / Mathf.PI;
+		GameObject sprite = (GameObject)
+			gameObject.transform.Find ("Sprite").gameObject; // change the sprite
+		sprite.transform.rotation = Quaternion.AngleAxis (rotAngle, Vector3.forward);
+	}
+
+
 	// Use this for initialization
 	void Start () {
 		lastWaypointTime = Time.time;
@@ -31,7 +46,7 @@ public class EnemyMove : MonoBehaviour {
 			if(currWaypoint  <waypoints.Length-2){ // haven't reached the end yet
 				currWaypoint ++;
 				lastWaypointTime = Time.time;
-				//need to ROTATE TODO:
+				RotateIntoMoveDirection ();
 			}
 			else{
 				
